@@ -9,12 +9,11 @@ import java.util.concurrent.CompletableFuture;
 public class OrderProcessingExample {
     private final OrderService orderService = new OrderService();
     private final CalculationService calculationService = new CalculationService();
-    private final InitMap initMap = new InitMap();
 
     public void processOrders() {
 
         // Process each order asynchronously
-        for (String orderId : initMap.getMapOrders().keySet()) {
+        for (String orderId : InitMap.getMapOrders().keySet()) {
             CompletableFuture<Double> orderAmountFuture = orderService.fetchOrderAmount(orderId);
 
             CompletableFuture<Double> taxFuture = orderAmountFuture.thenCompose(calculationService::calculateTax);

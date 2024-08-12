@@ -6,13 +6,12 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 public class OrderService {
-    private final InitMap initMap = new InitMap();
 
     // Simulates fetching order amount asynchronously
     public CompletableFuture<Double> fetchOrderAmount(String orderId) {
         return CompletableFuture.supplyAsync(() -> {
             simulateDelay();
-            return initMap.getMapOrders().get(orderId); // Simulate order amount
+            return InitMap.getMapOrders().get(orderId); // Simulate order amount
         });
     }
 
