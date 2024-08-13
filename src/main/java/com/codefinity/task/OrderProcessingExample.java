@@ -7,8 +7,13 @@ import com.codefinity.service.OrderService;
 import java.util.concurrent.CompletableFuture;
 
 public class OrderProcessingExample {
-    private final OrderService orderService = new OrderService();
-    private final CalculationService calculationService = new CalculationService();
+    private final OrderService orderService;
+    private final CalculationService calculationService;
+
+    public OrderProcessingExample(OrderService orderService, CalculationService calculationService) {
+        this.orderService = orderService;
+        this.calculationService = calculationService;
+    }
 
     public void processOrders() {
 
